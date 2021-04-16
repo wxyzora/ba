@@ -1,0 +1,55 @@
+
+.infoMain {
+    float: right;
+    width: 80px;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 5px;
+    border-radius: 10px;
+
+}
+
+.columns {
+
+    float: left;
+ 
+    padding: 10px;
+    border-right: 1px solid black;
+  
+}
+
+.columnTitle {
+    text-align: center;
+    font-size: 25px;
+    margin: 15px
+}
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(90vh, auto)
+}
+
+.grid > div:last-child {
+    border: none;
+}
+
+.columnGrid {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.cards {
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 10px;
+    margin: 10px;
+    height: 20vh;
+    background-color:darkgrey;
+}
+
+

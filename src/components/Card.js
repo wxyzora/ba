@@ -1,33 +1,58 @@
 import React from 'react';
+import { useDrag } from 'react-dnd'
 import './myStyles.css';
+import {ItemTypes} from "../utils/items";
 
 
-class Card extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-
-        }
-    }
+const Card = ({ card, id, setName}) => { 
 
 
 
-    render() {
+    const[{isDragging}, drag] = useDrag({
+    
+        type: ItemTypes.CARD,
+        item: {id},
+        
+
+        collect: monitor => ({
+            isDragging: !!monitor.isDragging()
+        }),
 
 
-        return(
-            <div class='cards'>
-                {this.props.title}
-                <br></br>
-                <br></br>
-                {this.props.content}
-            </div>
+    })
 
 
-        )
-    }
 
+
+   
+    return (
+         <div 
+            ref={drag}
+            className ='cards'
+            
+            style={{ opacity: isDragging? 0: 1}} 
+            >
+
+                <p>{card.title}</p>
+                <p> {card.content}</p>
+
+                
+                <form>
+                    {card.name==="" ?
+                    <input className="inputName"
+                       type='text' placeholder='Name' onChange={(e) => setName(e.target.value, id)} 
+                    /> : <input className="inputName"
+                    type='text' placeholder={card.name} onChange={(e) => setName(e.target.value, id)} 
+                    />
+                    }
+                    
+                </form>
+        </div>
+
+      
+
+    )
 }
+
 
 export default Card;

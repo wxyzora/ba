@@ -1,43 +1,34 @@
 import React from 'react';
+import { useDrop } from 'react-dnd';
+import { ItemTypes } from '../utils/items';
 import './myStyles.css';
-import Card from './Card';
 
 
+const Column = (props) => {
 
-class Column extends React.Component {
+    
+    const[{isOver}, drop] = useDrop({
+        accept: ItemTypes.CARD,
 
-    constructor(props) {
-        super(props)
-        this.state = {
+        drop: (item, monitor) => props.changeStatus(item.id, props.status),
+
+        collect: monitor => ({
+            isOver: !!monitor.isOver()
+        })
+
+    })
+
+
+    return (
+        <div ref={drop} className='drop-wrapper' style={{ background: isOver? 'yellow': ''}}>
+       
+            <div className="columnTitle" >{props.status}</div> 
+            <div className="columnGrid">{props.children}</div>
             
-        }
-    }
+        </div>
 
-    
-
-    render() {
-
-    
-        return(
-
-            <div class='columns'>
-               <div class="columnTitle">{this.props.name}</div> 
-                <div class='columnGrid'>
-                
-                        {
-                            this.props.cardsArr.map(card =>
-                                
-                                 <Card title={card.title} content={card.content}/>
-                                 )
-
-                        }
-                
-                </div>
-                
-            </div>
-        )
-    }
-
+    )
 }
+
 
 export default Column;

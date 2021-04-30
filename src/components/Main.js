@@ -1,109 +1,112 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './myStyles.css';
 import Column from './Column';
+import Card from './Card';
+import Footer from './Footer'
 
-class Main extends React.Component {
+import dataCards from './data/cards.json'
 
-    constructor(props) {
-        super(props)
-        this.state = {    
 
-            cards: [
 
-                {
-                    title: "test1",
-                    content: "try this",
-                    column: "Aufgaben"
+const Main = (props) => {
 
-                },
+    
 
-                {
-                    title: "Test2",
-                    content: "let's see",
-                    column: "Aufgaben"
-        
-                },
+    
+    let columns = props.dataColumns;
 
-                {
-                    title: "Test3",
-                    content: "let's see",
-                    column: "Aufgaben"
-        
-                },
 
-                {
-                    title: "Test4",
-                    content: "let's see",
-                    column: "Aufgaben"
-        
-                },
 
-                {
-                    title: "Test5",
-                    content: "let's see",
-                    column: "Aufgaben"
-        
-                },
+    const [cards , setCardList ] = useState(props.dataCards);
 
-                {
-                    title: "Test6",
-                    content: "let's see",
-                    column: "Aufgaben"
-        
-                }
+
+    const changeStatus = (id, status) => {
+        console.log(id, status)
+        let item = cards.filter((card, i) => card.id === id);
+        item[0].status = status;
+        console.log(item[0])
+        setCardList(cards.filter((card, i) => card.id !== id).concat(item[0]))
+
+    }
+
+
+
+    const setName = (e, id) => {
+       
+            console.log(e, id)
+
+           let ItemList = cards
+           ItemList.map((card)=>
+           (card.id === id) ? card.name = e : card.name)
+           
+           console.log(ItemList)
+
+           setCardList(ItemList)
+
                 
-            ]
         }
-    }
 
-    sortCards() {
-        let cardsAufg = this.state.cards.filter(function (card) {
-        return card.column === "Aufgaben";
-        });
+        const save = () => {
+            handleSaveToPC(cards)
+        }
 
-        let cardsInArb = this.state.cards.filter(function (card) {
-            return card.column === "In Arbeit";
-         });
-        let cardsFert = this.state.cards.filter(function (card) {
-            return card.column === "Fertig";
-        })
 
-        let cards = {cardsAufg, cardsInArb, cardsFert}
+        const handleSaveToPC = jsonData => {
+
+
+            let cards1 = dataCards.filter(function (card) {
+                let bool = true;
+                jsonData.includes(card) ?  bool = false: bool = true;
+                return bool;
+              })
+
+    
+              console.log(jsonData.concat(cards1))
+
+            const cards = JSON.stringify(jsonData.concat(cards1));
+            const blob = new Blob([cards], {type: "text/plain"});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = 'cards.json';
+            link.href = url;
+            link.click();
+          }
+
+
+    
+
+
+    return (  
         
+        <div>
+            <div key={50} className="grid">
 
-        return cards
-    };
+                {
+                    columns.map(column=>
+                    
+                        <div  key={column.id+300} className ='columns' > 
 
-
-
-    addCard() {
-        console.log("clicked", this.state.cards)
+                            
+                                <Column key={column.id} column={column} status={column.status} changeStatus={changeStatus}>
+                                    {
+                                        cards.map((card)=>
+                                            (card.status === column.status) ?
+                                                <Card key={card.id} id={card.id} card={card} setName={setName}/> : ""    
+                                        )
+                                    }    
+                                </Column>
+                          
+                        </div>
+                        
+                    )
+                }
+    
+            </div> 
+        <Footer save = {save}/> 
+    
+    </div>
         
-        
-    }
-
-    render() {
-
-        
-        let cards = this.sortCards();
-        console.log(cards)
-        
-        return(
-             
-            <div>
-               <div class="grid"> 
-                 <Column name = "Aufgaben" cardsArr={cards.cardsAufg}/>
-                 <Column name = "In Arbeit" cardsArr={cards.cardsInArb}/>
-                 <Column name = "Fertig" cardsArr={cards.cardsFert}/>
-                </div>
-                
-                <button onClick={() => this.addCard()}>Aufgabe hinzufügen</button>
-                <div class='infoMain'>Runde: {this.props.round} <br></br> Gruppe: {this.props.group}</div>
-                
-            </div>
-        )
-    }
-  
+    )
 }
 
 export default Main;

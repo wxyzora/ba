@@ -1,17 +1,17 @@
 [
 
     {
-        "id": 7,
+        "id": 1,
         "status": "Aufgaben"
        
     },
     {
-        "id": 8,
+        "id": 2,
         "status": "In Arbeit"
     
     },
     {
-        "id": 9,
+        "id": 3,
         "status": "Fertig"
         
     }

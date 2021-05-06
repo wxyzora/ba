@@ -5,30 +5,22 @@ import './myStyles.css';
 
 
 const Column = (props) => {
-
     
     const[{isOver}, drop] = useDrop({
         accept: ItemTypes.CARD,
-
         drop: (item, monitor) => props.changeStatus(item.id, props.status),
-
         collect: monitor => ({
             isOver: !!monitor.isOver()
         })
-
     })
 
-
     return (
-        <div ref={drop} className='drop-wrapper' style={{ background: isOver? 'yellow': ''}}>
-       
-            <div className="columnTitle" >{props.status}</div> 
-            <div className="columnGrid">{props.children}</div>
-            
-        </div>
 
+        <div ref={drop} className='drop-wrapper' style={{ background: isOver? 'PaleGreen': ''}}> 
+            <div className="columnTitle" >{props.status}</div> 
+            <div className="columnGrid">{props.children}</div>      
+        </div>
     )
 }
-
 
 export default Column;

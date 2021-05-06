@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Footer = ({save, nextRound}) => {
+const Footer = (props) => {
     
     return (
-        <div className="header">
-             <button type="button" onClick={save}>Speichern</button>
+        <div className="footer">  
+             {props.children}
+             <button className="button" type="button" onClick={props.save}>Speichern</button>
         </div> 
-
     )
 }
 

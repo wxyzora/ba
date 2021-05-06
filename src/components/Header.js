@@ -3,9 +3,9 @@ import React from 'react';
 const Header = (props) => {
     
     return (
-        <div className="header">Runde: {props.round} Gruppe: {props.group}</div>
-
-
+        <div>
+            <div className="header">Runde: {props.round} Gruppe: {props.group} {props.children}</div>    
+        </div>
     )
 }
 

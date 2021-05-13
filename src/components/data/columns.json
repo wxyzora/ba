@@ -1,18 +1,14 @@
 [
-
     {
         "id": 1,
-        "status": "Aufgaben"
-       
+        "status": "Aufgaben"  
     },
     {
         "id": 2,
         "status": "In Arbeit"
-    
     },
     {
         "id": 3,
-        "status": "Fertig"
-        
+        "status": "Fertig"   
     }
 ]

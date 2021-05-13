@@ -105,6 +105,7 @@ const Main = (props) => {
 
     return (       
         <div>
+
             <div key={50} className="grid">
                 {
                     columns.map(column=>                    
@@ -138,15 +139,15 @@ const Main = (props) => {
                                 <label className="label">Titel:</label>
                                 <div>
                                 <input className="input" type='text'  onChange={(e) => setNewCard(prevState =>
-                                                                                                                            ({
-                                                                                                                                id: prevState.id,
-                                                                                                                                title: e.target.value,
-                                                                                                                                content: prevState.content,
-                                                                                                                                status: prevState.status,
-                                                                                                                                round: props.round,
-                                                                                                                                group: props.group,
-                                                                                                                                name: prevState.name
-                                                                                                                            }))} />
+                                                                                                    ({
+                                                                                                        id: prevState.id,
+                                                                                                        title: e.target.value,
+                                                                                                        content: prevState.content,
+                                                                                                        status: prevState.status,
+                                                                                                        round: props.round,
+                                                                                                        group: props.group,
+                                                                                                        name: prevState.name
+                                                                                                    }))} />
                                 </div>
 
                             </div>
@@ -154,15 +155,15 @@ const Main = (props) => {
                                 <label>Beschreibung:</label>
                                 <div>
                                 <input className="input" type='text'  onChange={(e) => setNewCard(prevState =>    
-                                                                                                                            ({
-                                                                                                                                id: prevState.id,
-                                                                                                                                title: prevState.title,
-                                                                                                                                content: e.target.value,
-                                                                                                                                status: prevState.status,
-                                                                                                                                round: props.round,
-                                                                                                                                group: props.group,
-                                                                                                                                name: prevState.name
-                                                                                                                            }))} />  
+                                                                                                    ({
+                                                                                                        id: prevState.id,
+                                                                                                        title: prevState.title,
+                                                                                                        content: e.target.value,
+                                                                                                        status: prevState.status,
+                                                                                                        round: props.round,
+                                                                                                        group: props.group,
+                                                                                                        name: prevState.name
+                                                                                                    }))} />  
                                 </div>
                             </div>
                             
@@ -174,7 +175,9 @@ const Main = (props) => {
                 
                 </Modal>
             </Footer>
-        </div>     
+            
+        </div> 
+            
         )
 }
 

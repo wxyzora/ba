@@ -48,7 +48,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
     
     {useEffect(() => {
-    fetch('/data/cards.json')
+    fetch('/data/data.json')
       .then(response => response.json())
       .then(json =>
         initi(json) )
@@ -107,7 +107,7 @@ function App() {
 
           </Header>
 
-          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns}/>
+          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} data={data}/>
           </div>
                   
        : <h1>loading</h1>  }  

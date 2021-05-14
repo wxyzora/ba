@@ -1,0 +1,299 @@
+{
+    "setup":
+        [
+            {
+                "rounds": 3,
+                "groups": 3
+
+            }
+        ],
+
+    "cards":
+        [
+            {
+                "id": 111, 
+                "title":"Aufgabe 1 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 1 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 211,
+                "title":"Aufgabe 2 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 2 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 311,
+                "title":"Aufgabe 3 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 3 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 411,
+                "title":"Aufgabe 4 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 4 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 511,
+                "title":"Aufgabe 5 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 5 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 611,
+                "title":"Aufgabe 6 Runde 1 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 6 Runde 1 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 121,
+                "title":"Aufgabe 1 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 1 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 221,
+                "title":"Aufgabe 2 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 2 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id":321,
+                "title":"Aufgabe 3 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 3 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 421,
+                "title":"Aufgabe 4 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 4 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 521,
+                "title":"Aufgabe 5 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 5 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 621,
+                "title":"Aufgabe 6 Runde 2 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 6 Runde 2 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 131,
+                "title":"Aufgabe 1 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 1 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+
+            {
+                "id": 231,
+                "title":"Aufgabe 2 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 2 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 331,
+                "title":"Aufgabe 3 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 3 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 431,
+                "title":"Aufgabe 4 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 4 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 531,
+                "title":"Aufgabe 5 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 5 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 631,
+                "title":"Aufgabe 6 Runde 3 Gruppe 1",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 6 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":3,
+                "group":1,
+                "name":""
+            },
+            {
+                "id": 112,
+                "title":"Aufgabe 1 Runde 1 Gruppe 2",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 1 Runde 3 Gruppe 1",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":2,
+                "name":""
+            },
+            {
+                "id": 212,
+                "title":"Aufgabe 2 Runde 1 Gruppe 2",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 2 Runde 1 Gruppe 2",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":1,
+                "group":2,
+                "name":""
+            },
+            {
+                "id": 122,
+                "title":"Aufgabe 1 Runde 2 Gruppe 2",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 1 Runde 2 Gruppe 2",
+                "images": {},
+                "status":"Aufgaben",
+                "deletable": false,
+                "round":2,
+                "group":2,
+                "name":""
+            },
+            {
+                "id": 222,
+                "title":"Aufgabe 2 Runde 2 Gruppe 2",
+                "description": "Dies ist eine Kurzbeschreibung.",
+                "content":"Dies ist die Beschreibung der Aufgabe 2 Runde 2 Gruppe 2",
+                "images": {},
+                "status":"In Arbeit",
+                "deletable": false,
+                "round":2,
+                "group":2,
+                "name":""
+            }
+            
+
+
+        ],
+    
+    "columns":
+        [
+            {
+                "id": 1,
+                "status": "Aufgaben"  
+            },
+            {
+                "id": 2,
+                "status": "In Arbeit"
+            },
+            {
+                "id": 3,
+                "status": "Fertig"   
+            }
+        ]
+
+}

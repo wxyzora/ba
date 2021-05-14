@@ -1,55 +1,118 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Main from './components/Main'
-import dataCards from './components/data/cards.json'
-import dataColumns from './components/data/columns.json'
+
 import Header from './components/Header'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { v4 as uuidv4 } from 'uuid';
+
 
 function App() {
 
   let round = 1;
   let group = 1;
 
+  const [ data, setFullData] = useState([])
 
 
-  const [ {roundCurr, groupCurr, cards}, setRound] = useState({roundCurr: round, groupCurr: group, cards: dataCards})
+  const [ {roundCurr, groupCurr}, setRound] = useState({roundCurr: round, groupCurr: group})
 
+  const [loaded, setLoaded] = useState(false)
+
+
+ 
+
+  const initi = (json) => {
+
+    setFullData(json)
+    setLoaded(true)
+
+  
+  }
+
+ 
+  const getArray = (num) => {
+    let i;
+    let array = [];
+    
+    for(i=1; i<=num; i++){
+      array.push(i)
+    }
+    return array;
+  }
+  
 
   return (
 
-    
-    
     <DndProvider backend={HTML5Backend}>
-     
-      <div className="App">
+    
+    {useEffect(() => {
+    fetch('/data/cards.json')
+      .then(response => response.json())
+      .then(json =>
+        initi(json) )
+      
+  }, [])}
 
-          <Header round = {roundCurr} group = {groupCurr}>
+  {loaded ?
 
-            <button className="button" onClick={() => setRound(prevState => ({
-              roundCurr: prevState.roundCurr+1,
-              groupCurr: prevState.groupCurr,
-              cards: dataCards.filter(function (card) {
-                return (card.group === groupCurr && card.round === prevState.roundCurr+1);
-              })
-            }
-            )) }>Nächste Runde</button>
+          <div className="App">  
 
-            <button className="button" onClick={() => setRound(prevState => ({
-              roundCurr: 1,
-              groupCurr: prevState.groupCurr+1,
-              cards: dataCards.filter(function (card) {
-                return (card.group === prevState.groupCurr+1 && card.round === 1);
-              })
-            }
-            )) }>Nächste Gruppe</button>
+          <Header round = {roundCurr} group = {groupCurr}> 
+
+            {data.setup.rounds>1? 
+              <div>Runde: 
+
+                  {
+                  
+                    getArray(data.setup.rounds).map(i => 
+
+                    <button key={uuidv4()} className="button" onClick={() => setRound(prevState => ({
+                      roundCurr: i,
+                      groupCurr: prevState.groupCurr,
+                      cards: data.cards.filter(function (card) {
+                        return (card.group === groupCurr && card.round === i);
+                      })
+                    }
+                    )) } 
+                    style={{background: i===roundCurr ? 'PaleGreen': ''}}
+                    >{i}</button>
+                    )
+                  
+                  }
+              </div>:"" }
+
+              {data.setup.groups>1?
+              <div>
+                    Gruppe:
+                    {
+                    
+                    getArray(data.setup.groups).map(i => 
+
+                    <button key={uuidv4()} className="button" onClick={() => setRound(prevState => ({
+                      roundCurr: prevState.roundCurr,
+                      groupCurr: i,
+                      cards: data.cards.filter(function (card) {
+                        return (card.group === i && card.round === roundCurr);
+                      })
+                    }
+                    )) }
+                    style={{background: i===groupCurr ? 'PaleGreen': ''}}
+                    >{i}</button>
+                    )
+                  
+                  }
+              </div>:""}
 
           </Header>
 
-          <Main round={roundCurr} group={groupCurr} dataCards={dataCards} cards={cards} dataColumns={dataColumns}/>
-      </div>
-          
+          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns}/>
+          </div>
+                  
+       : <h1>loading</h1>  }  
+
+
     </DndProvider>
           
   );

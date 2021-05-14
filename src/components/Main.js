@@ -4,14 +4,14 @@ import Column from './Column';
 import Card from './Card';
 import Footer from './Footer'
 import Modal from 'react-modal'
-import dataCards from './data/cards.json'
 
 
 const Main = (props) => {
 
+
     let columns = props.dataColumns;
 
-    const [cards , setCardList ] = useState(dataCards);
+    const [cards , setCardList ] = useState(props.dataCards);
 
     const changeStatus = (id, status) => {
         console.log(id, status)
@@ -40,7 +40,7 @@ const Main = (props) => {
 
     const handleSaveToPC = jsonData => {
 
-        let cards1 = dataCards.filter(function (card) {
+        let cards1 = props.dataCards.filter(function (card) {
             let bool = true;
             jsonData.includes(card) ?  bool = false: bool = true;
             return bool;

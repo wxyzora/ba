@@ -4,27 +4,22 @@ import Column from './Column';
 import Card from './Card';
 import Footer from './Footer'
 import Modal from 'react-modal'
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Main = (props) => {
-
 
     let columns = props.dataColumns;
 
     const [cards , setCardList ] = useState(props.dataCards);
 
-
     const changeStatus = (id, status) => {
-        console.log(id, status)
         let item = cards.filter((card, i) => card.id === id);
         item[0].status = status;
-        console.log(item[0])
         setCardList(cards.filter((card, i) => card.id !== id).concat(item[0]))
     }
 
     const setName = (e, id) => {
-        console.log(e, id)
-
         let ItemList = cards
         ItemList.map((card)=>
             (card.id === id) ? card.name = e : card.name)
@@ -33,28 +28,21 @@ const Main = (props) => {
         setCardList(ItemList)         
     }
 
-    const save = () => {
-        console.log(props.group)
+    const save = () => { 
         handleSaveToPC(cards)
     }
 
-
     const handleSaveToPC = jsonData => {
-
         let cards1 = props.data.cards.filter(function (card) {
             let bool = true;
             jsonData.includes(card) ?  bool = false: bool = true;
             return bool;
             })
-
-        console.log(jsonData.concat(cards1))
-
         let dataNew = {
             setup: props.data.setup,
             cards: jsonData.concat(cards1),
             columns: props.data.columns
         }
-
         const dataSafe = JSON.stringify(dataNew);
         const blob = new Blob([dataSafe], {type: "text/plain"});
         const url = URL.createObjectURL(blob);
@@ -78,7 +66,7 @@ const Main = (props) => {
             name
         }
         , setNewCard] = useState({
-            id: 24,
+            id: uuidv4(),
             title: "",
             description: "",
             content: "",
@@ -109,7 +97,6 @@ const Main = (props) => {
 
         setCardList(cards.concat(obj[0]))
         setModal(false)
-        console.log(cards)
 
         return obj
     }
@@ -121,6 +108,9 @@ const Main = (props) => {
 
     return (       
         <div>
+            {window.addEventListener('beforeunload', ev => {
+                ev.returnValue = "Ungespeicherte Änderungen gehen verloren. Fortfahren?";
+            })}
 
             <div key={50} className="grid">
                 {
@@ -144,12 +134,9 @@ const Main = (props) => {
             <Footer save = {save}>
 
                 <button className="button" onClick={() => setModal(true)}>Neue Aufgabe</button>
-
                 <Modal isOpen={modalIsOpen} ariaHideApp={false}>
-
                     <div className="modal">
-                        <h2>Füge eine neue Aufgabe hinzu</h2>
-                        
+                        <h2>Füge eine neue Aufgabe hinzu</h2>        
                         <form className="addForm">
                             <div className="formControl">
                                 <label className="label">Titel:</label>
@@ -170,7 +157,6 @@ const Main = (props) => {
 
 
                                 </div>
-
                             </div>
                             <div className="formControl">
                                 <label>Beschreibung:</label>
@@ -189,7 +175,7 @@ const Main = (props) => {
                                                                                                         name: prevState.name
                                                                                                     }))} />  
                                 </div>
-                                </div>
+                            </div>
                             <div className="formControl">
                                 <label className="label">Inhalt:</label>
                                 <div>
@@ -209,13 +195,11 @@ const Main = (props) => {
 
 
                                 </div>
-                                </div>
+                            </div>
                         </form>
                         <button className="button" onClick={() => addCard()}>Speichern</button>
                         <button className="button" onClick={() => setModal(false)}>Abbrechen</button>   
-
                     </div>                                                                                              
-                
                 </Modal>
             </Footer>
             

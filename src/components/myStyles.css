@@ -1,5 +1,6 @@
 .header {    
     font-size: 20px;
+    letter-spacing: 2px;
     margin: 5px;
     text-align: center;
     text-transform: uppercase;
@@ -10,7 +11,6 @@
 .columns {
     float: left;
     background-color: rgb(235, 235, 235);
-
     padding: 10px;
     margin: 5px;
 }
@@ -33,6 +33,7 @@
 }
 
 .cards {
+    font-size: 15px;
     text-align: center;
     border: 1px black solid;
     border-radius: 5px;
@@ -43,7 +44,16 @@
 }
 
 .cardTitle {
+    margin-top: 3px;
     font-weight: bold
+}
+
+.cardName {
+    font-size: 13px;
+    margin: 20px;
+    position:absolute; 
+    bottom:0;
+    float: right;
 }
 
 .drop-wrapper {
@@ -60,13 +70,28 @@
 }
 
 .button {
+    font-size: 13px;
     border-radius: 5px;
     background-color: white;
     color: DarkGreen;
     border: 1px solid DarkGreen; 
-    width: 70px;
+    width: 75px;
     height: 40px;
     margin: 5px  
+}
+
+.cardClickable {
+    background-color: lightsteelblue;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.cardClickable:hover {
+    background-color: lightslategray;
+    color: white
 }
 
 .button:hover {
@@ -78,16 +103,6 @@
     float:inline-end;
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-.cardBtns { 
-    position:absolute; 
-    bottom:0;
-    float: right;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-transform: uppercase;
-
 }
 
 .modal {
@@ -105,6 +120,15 @@
     margin: 30px
 }
 
+.recTime {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    color: darkgreen;
+    font-weight: bold;
+}
+
 .buttonDel {
     color: red;
     background: none;
@@ -112,7 +136,11 @@
     border-radius: 5px;
     width: 50px;
     height: 40px;
-    margin: 5px
+    margin: 5px;
+    position:absolute; 
+    top:0;
+    right: 0;
+    
     
 }
 
@@ -120,4 +148,21 @@
     border: 1px red solid;
     
 }
+
+.loader {
+    border: 13px solid #f3f3f3; 
+    border-top: 13px solid darkslategrey; 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 

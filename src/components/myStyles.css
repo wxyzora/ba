@@ -1,5 +1,5 @@
 .header {    
-    font-size: 20px;
+        
     letter-spacing: 2px;
     margin: 5px;
     text-align: center;
@@ -90,7 +90,7 @@
 }
 
 .cardClickable:hover {
-    background-color: lightslategray;
+    background-color: #002a3f;
     color: white
 }
 
@@ -132,7 +132,7 @@
 .buttonDel {
     color: red;
     background: none;
-    border: 1px skyblue solid;
+    border: 1px lightsteelblue solid;
     border-radius: 5px;
     width: 50px;
     height: 40px;
@@ -149,20 +149,40 @@
     
 }
 
-.loader {
-    border: 13px solid #f3f3f3; 
-    border-top: 13px solid darkslategrey; 
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    top: 30%;
+.start {
+    
+    text-align: center;
+    background: rgb(235, 235, 235);
+    height: 100vh;
+}
+
+.startInput {
+ 
+    position: relative; 
     left: 50%;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    top: 10%;
+    transform: translate(-50%, 0);
+    width: 70vh;
+    height: 50vh;
+    font-size: 20px;
+}
+
+.fileInput {
+    background-color: lightsteelblue;
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+    height: 10vh;
+    padding: 25px
+}
+
+
+
+
+.btnImg {
+    position: absolute;
+    right: 5%;
+}
+
+
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Main from './components/Main'
 import Header from './components/Header'
 import { DndProvider } from 'react-dnd'
@@ -19,43 +19,82 @@ function App() {
 
   const [images, setImages] = useState([{name: null, img: null}])
 
+  const [addPics, setAddPics] = useState(false)
+
+  const initiPlain = () => {
+    setFullData({"setup": 
+                    {
+                        "rounds": 1,
+                        "groups": 1
+
+                    },
+                  "cards":[],
+                  "columns":
+                      [
+                          {
+                              "id": 1,
+                              "status": "Aufgaben"  
+                          },
+                          {
+                              "id": 2,
+                              "status": "In Arbeit"
+                          },
+                          {
+                              "id": 3,
+                              "status": "Fertig"   
+                          }
+                      ]
+                })
+
+    setLoaded(true)
+  }
+
   let imgNew = [];
+
   const initi = () => {
     let input = document.getElementById('inputFile')
     
+    if(Array.from(input.files).length === 0) {alert('Bitte Textdatei auswählen')} else {
     let fileReader = new FileReader();
     fileReader.onload = function(event) {
       let dataInput = JSON.parse(event.target.result);
       setFullData(dataInput)
     
     }
-
     fileReader.readAsText(input.files[0]) 
+  
 
-    let img = document.getElementById('inputImages')
+    if(addPics === true){
+        let img = document.getElementById('inputImages')
 
-    Array.from(img.files).map((file, i) => {
- 
-      let imageReader = new FileReader();
-      imageReader.onload = function(event) {
+        if(Array.from(input.files).length === 0) {alert('Bitte Bilder hinzufügen')} else {
 
-        let imageNew = {name: file.name, img: event.target.result};
-        
-        imgNew = [...imgNew, imageNew]
+        Array.from(img.files).map((file, i) => {
+    
+          let imageReader = new FileReader();
+          imageReader.onload = function(event) {
 
-        if(i+1 === Array.from(img.files).length) {
-          setTimeout(function() {
-            setImages(imgNew)
-            setLoaded(true)
-          }, 2000)
-        }      
+            let imageNew = {name: file.name, img: event.target.result};
+            
+            imgNew = [...imgNew, imageNew]
+
+            if(i+1 === Array.from(img.files).length) {
+              setTimeout(function() {
+                setImages(imgNew)
+                setLoaded(true)
+              }, 1000)
+            }      
+          }
+
+        imageReader.readAsDataURL(file)
+          return "";
+        })
       }
-
-    imageReader.readAsDataURL(file)
-      return "";
-    })
+    } else {setTimeout(function() {
+      setLoaded(true)
+    }, 1000)}
   }
-
+  }
 
   const getArray = (num) => {
     let i;
@@ -87,7 +126,7 @@ function App() {
                       })
                     }
                     )) } 
-                    style={{background: i===roundCurr ? 'PaleGreen': ''}}
+                    style={{background: i===roundCurr ? '#E4F9D4': ''}}
                     >{i}</button>
                     )
                   
@@ -107,7 +146,7 @@ function App() {
                       })
                     }
                     )) }
-                    style={{background: i===groupCurr ? 'PaleGreen': ''}}
+                    style={{background: i===groupCurr ? '#E4F9D4': ''}}
                     >{i}</button>
                     )
                   }
@@ -116,18 +155,47 @@ function App() {
           <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} data={data} images={images}/>
           </div>        
        :  
-      
-       <div>
-         <div>
-          <label>Wähle die Textdatei aus:</label>
+     
+       <div className="start">
+         <div className="startInput">
+         <div className="fileInput">
+           <div className="label">
+          <label>Textdatei auswählen</label>
+          </div>
             <input type="file" id="inputFile" accept="*.json"></input>
-            </div><div>
-          <label>Wähle die zugehörigen Bilder aus:</label>
-            <input type="file" multiple id="inputImages"></input>
             </div>
+            <div>
+            {addPics ? 
+              <div className="fileInput">
+                <div className="label">
+            <label>Bilder hinzufügen</label>
+            </div>
+              <input type="file" multiple id="inputImages"></input>
+              
+              <div className="btnImg">
+              <button className= "button" onClick={()=>setAddPics(false)}>Keine Bilder</button>
+              </div>
+              
+              </div>
+              : <button className= "button" onClick={()=>setAddPics(true)}>Bilder hinzufügen</button>  
+            } 
+            </div>
+
             <button className= "button" onClick={()=>initi()}>Starten</button>
 
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <div className="fileInput">
+            <div className="label">Ohne Textdatei starten</div>
+            <button className= "button" onClick={()=>initiPlain()}>Starten</button>
+            </div>
+            </div>
+            
         </div>
+    
   }
 
     </DndProvider>        

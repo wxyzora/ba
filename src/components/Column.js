@@ -16,7 +16,7 @@ const Column = (props) => {
 
     return (
 
-        <div ref={drop} className='drop-wrapper' style={{ background: isOver? 'PaleGreen': ''}}> 
+        <div ref={drop} className='drop-wrapper' style={{ background: isOver? '#E4F9D4': ''}}> 
             <div className="columnTitle" >{props.status}</div> 
             <div className="columnGrid">{props.children}</div>      
         </div>

@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const Card = ({ card, id, setName, setDelete, data}) => { 
+const Card = ({ card, id, setName, setDelete, data, images}) => { 
 
     const[{isDragging}, drag] = useDrag({
         type: ItemTypes.CARD,
@@ -49,8 +49,12 @@ const Card = ({ card, id, setName, setDelete, data}) => {
                     
                     <br></br>
 
-                    {card.images.map(url => 
-                        <img src={"/data/img/"+url} alt="" height="300" key={uuidv4()}/>
+                    {
+                    images.map(image => 
+
+                        card.images.includes(image.name) ? 
+                        
+                        <img src={image.img} alt="" height="300" key={uuidv4()}/> : ""
                     )}
                              
                     <form>

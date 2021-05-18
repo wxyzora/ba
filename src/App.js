@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Main from './components/Main'
 import Header from './components/Header'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { v4 as uuidv4 } from 'uuid';
+
 
 function App() {
 
@@ -16,10 +17,45 @@ function App() {
 
   const [loaded, setLoaded] = useState(false)
 
-  const initi = (json) => {
-    setFullData(json)
-    setLoaded(true)
+  const [images, setImages] = useState([{name: null, img: null}])
+
+  let imgNew = [];
+  const initi = () => {
+    let input = document.getElementById('inputFile')
+    
+    let fileReader = new FileReader();
+    fileReader.onload = function(event) {
+      let dataInput = JSON.parse(event.target.result);
+      setFullData(dataInput)
+    
+    }
+
+    fileReader.readAsText(input.files[0]) 
+
+    let img = document.getElementById('inputImages')
+
+    Array.from(img.files).map((file, i) => {
+ 
+      let imageReader = new FileReader();
+      imageReader.onload = function(event) {
+
+        let imageNew = {name: file.name, img: event.target.result};
+        
+        imgNew = [...imgNew, imageNew]
+
+        if(i+1 === Array.from(img.files).length) {
+          setTimeout(function() {
+            setImages(imgNew)
+            setLoaded(true)
+          }, 2000)
+        }      
+      }
+
+    imageReader.readAsDataURL(file)
+      return "";
+    })
   }
+
 
   const getArray = (num) => {
     let i;
@@ -33,14 +69,9 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend} >
    
-      {useEffect(() => {
-      fetch('/data/data.json')
-        .then(response => response.json())
-        .then(json =>
-          initi(json) ) 
-      }, [])}
+   {
 
-      {loaded ?
+      loaded ?
         <div className="App">  
           <Header round = {roundCurr} group = {groupCurr}> 
             {data.setup.rounds>1? 
@@ -82,9 +113,23 @@ function App() {
                   }
               </div>:""}
           </Header>
-          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} data={data}/>
-          </div>           
-       :  <div className="loader"></div>   }  
+          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} data={data} images={images}/>
+          </div>        
+       :  
+      
+       <div>
+         <div>
+          <label>Wähle die Textdatei aus:</label>
+            <input type="file" id="inputFile" accept="*.json"></input>
+            </div><div>
+          <label>Wähle die zugehörigen Bilder aus:</label>
+            <input type="file" multiple id="inputImages"></input>
+            </div>
+            <button className= "button" onClick={()=>initi()}>Starten</button>
+
+        </div>
+  }
+
     </DndProvider>        
   );
 }

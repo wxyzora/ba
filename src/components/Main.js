@@ -122,7 +122,7 @@ const Main = (props) => {
 
                                             card.round === props.round && card.group === props.group ?
                                             ((card.status === column.status) ?
-                                                <Card key={card.id} id={card.id} card={card} setName={setName} setDelete={setDelete} data={props.data}/> : ""    ) :""
+                                                <Card key={card.id} id={card.id} card={card} setName={setName} setDelete={setDelete} data={props.data} images={props.images}/> : ""    ) :""
                                         )
                                     }    
                                 </Column>

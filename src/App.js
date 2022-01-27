@@ -21,6 +21,8 @@ function App() {
 
   const [addPics, setAddPics] = useState(false)
 
+  
+
   const initiPlain = () => {
     setFullData({"setup": 
                     {
@@ -104,6 +106,9 @@ function App() {
     }
     return array;
   }
+
+  const[editingMode, setEditingMode] = useState(false)
+  
   
   return (
     <DndProvider backend={HTML5Backend} >
@@ -152,11 +157,15 @@ function App() {
                   }
               </div>:""}
           </Header>
-          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} data={data} images={images}/>
+          <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} 
+                data={data} images={images} editingMode={editingMode} setEditingMode={setEditingMode}/>
           </div>        
        :  
-     
-       <div className="start">
+       
+      (editingMode)? <Main round={roundCurr} group={groupCurr} dataCards={data.cards} cards={data.cards} dataColumns={data.columns} 
+      data={data} images={images} editingMode={editingMode} setEditingMode={setEditingMode}/> :
+      
+      <div className="start">
          <div className="startInput">
          <div className="fileInput">
            <div className="label">
@@ -193,6 +202,14 @@ function App() {
             <button className= "button" onClick={()=>initiPlain()}>Starten</button>
             </div>
             </div>
+
+         
+         <div>
+         <button className="button" style={{position: 'absolute',
+                                            bottom: '8px',
+                                             left: '16px'}}
+                        onClick={()=>setEditingMode(true)} >Editier- Modus</button>
+         </div>
             
         </div>
     

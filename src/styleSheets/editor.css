@@ -1,0 +1,90 @@
+
+.abbrechen {
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: white;
+    color: red;
+    border: 1px solid red; 
+    width: 75px;
+    height: 40px;
+    margin: 5px  
+}
+   
+    
+.abbrechen:hover {
+    background-color: darkred;
+    color: white; 
+}
+
+.form-box{
+    min-width: 30%;
+    height: 90vh;
+    margin: 0vw;
+    padding: 3vw;
+    background-color: rgb(235, 235, 235);
+    position:relative; 
+}
+
+
+
+.form-box label{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 2vh 0;
+}
+
+
+
+.form-box input, textarea{
+    display: block;
+   
+    width: 90%;
+    padding: .5rem .8rem .5rem .8rem;
+    margin: .9vw 0;
+    border:0;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrapper-class {
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+  .editor-class {
+    background-color:white;
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+  .toolbar-class {
+    border: 1px solid #ccc;
+  }
+
+
+
+
+  table, th, td, caption {
+    border: thin solid #a0a0a0;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-width: thin 0 0 thin;
+    margin: 0 0 1em;
+    table-layout: auto;
+    max-width: 100%;
+  }
+  th, td {
+    font-weight: normal;
+    text-align: left;
+  }
+  th, caption {
+    background-color: #f1f3f4;
+    font-weight: 700;
+  }

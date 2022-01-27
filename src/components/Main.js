@@ -4,7 +4,9 @@ import Column from './Column';
 import Card from './Card';
 import Footer from './Footer'
 import Modal from 'react-modal'
+import EditorMode from './EditorMode';
 import { v4 as uuidv4 } from 'uuid';
+import EditorMode2 from './EditorModal';
 
 
 const Main = (props) => {
@@ -103,15 +105,24 @@ const Main = (props) => {
 
     const setDelete = (id) => {
         setCardList(cards.filter((card) => card.id !== id))
+
     }
 
 
-    return (       
+    return (    
+
+        
         <div>
             {window.addEventListener('beforeunload', ev => {
                 ev.returnValue = "Ungespeicherte Änderungen gehen verloren. Fortfahren?";
             })}
+         
 
+        { (props.editingMode) ?  <EditorMode2 setEditingMode={props.setEditingMode} setCardList={setCardList}
+                                    save={save} setDelete={setDelete} addCard={addCard} setNewCard={setNewCard}
+                                /> :   
+
+        <div>
             <div key={50} className="grid">
                 {
                     columns.map(column=>                    
@@ -131,7 +142,11 @@ const Main = (props) => {
                 }
             </div> 
 
+    
+
             <Footer save = {save}>
+
+            
 
                 <button className="button" onClick={() => setModal(true)}>Neue Aufgabe</button>
                 <Modal isOpen={modalIsOpen} ariaHideApp={false}>
@@ -143,7 +158,7 @@ const Main = (props) => {
                                 <div>
                                 <input className="input" type='text'  onChange={(e) => setNewCard(prevState =>
                                                                                                     ({
-                                                                                                        id: prevState.id,
+                                                                                                        id: uuidv4,
                                                                                                         title: e.target.value,
                                                                                                         description: prevState.description,
                                                                                                         content: prevState.content,
@@ -202,8 +217,11 @@ const Main = (props) => {
                     </div>                                                                                              
                 </Modal>
             </Footer>
-            
-        </div> 
+            </div>
+}
+
+</div>
+     
             
         )
 }

@@ -4,7 +4,7 @@ import Header from './Header';
 
 import Modal from 'react-modal'
 import TextEditor from './TextEditor'
-
+import EditorModal from './EditorMode';
 
 
 const EditorMode = (props) => {
@@ -162,71 +162,112 @@ const EditorMode = (props) => {
 
     
 
-
     
     return (
-        <div className = "form-box"> 
-           
-        <Header  round = {roundCurr} group = {groupCurr}>
+        <div> 
+
+        <div className="overviewHeader">
+
+            <button className='btn' onClick={() => setRoundsGroups(prevState=>({
+                        rounds: [...rounds, rounds.length+1],
+                        groups: prevState.groups
+                    })) }
+                    
+                    >Weitere Runde</button>
+
+                    {rounds.length >1? 
+                    <button className='btnRot' onClick={() => deleteRound()} >Letzte Runde löschen</button> : "" }
+
+                <button className='btn' onClick={() => setRoundsGroups(prevState=>({
+                        rounds: prevState.rounds,
+                        groups: [...groups, groups.length+1]
+                    })) }
+                    
+                    >Weitere Gruppe</button>
+
+                    {groups.length >1? 
+                    <button className='btnRot' onClick={() => deleteGroup()} >Letzte Gruppe löschen</button> : "" }
+
+            <button className='btn' onClick={()=>save()}>Speichern</button>
+            <button className="btnRot" onClick={()=>props.setEditingMode(false)}>Schließen</button>
+
+
+        </div>
+
+
+        <div className = "overview">
+
+
+
+        {
+            rounds.map( round => {
+
+                return(
+
+
+                    <div  key={round} className="gridColumnRound">
+
+                    <p>Runde {round}</p>
+
+                        <div className="gridRounds">
+
+                        {
+                            groups.map(group => {
+
+                                return(
+
+                                    <div className="gridGroups" key={group}
+                                    
+                                    onClick={() => setRoundGroup(prevState => ({
+                                        roundCurr: round,
+                                        groupCurr: group,
+                                      }
+                  
+                                      )) } 
+                                      style={{background: round===roundCurr&&group===groupCurr ? '#E4F9D4': ''}}
+                                    >
+
+                                        <div className="gridCards">
+
+                                            {
+
+                                                cards.filter(card => (card.round===round && card.group===group)).map(
+                                                    card =>
+                                                        <div key={card.id} className="overviewCards">
+                                                            <a>{card.title}</a>
+                                                        </div>
+                                                    
+                                                )
+                                            }
+
+                                        </div>
+
+                                    </div>
+                                )
+                            })
+                        }
+
+                        </div>
+
+                    </div>
+                )
+            })
     
-              <div>Runden:  
-         
-                  {
-                     
-                    rounds.map(round => { return(
-                    <button key={"round"+ round} className="button" onClick={() => setRoundGroup(prevState => ({
-                      roundCurr: round,
-                      groupCurr: prevState.groupCurr,
-                    }
+        }
+   
 
-                    )) } 
-                    style={{background: round===roundCurr ? '#E4F9D4': ''}}
-                    >{round}</button>
-                    )
-                })
-                
-                  }
-                
-                <button className='button' onClick={() => setRoundsGroups(prevState=>({
-                    rounds: [...rounds, rounds.length+1],
-                    groups: prevState.groups
-                })) }
-                
-                >Weitere Runde</button>
-
-                {rounds.length >1? 
-                <button className='abbrechen' onClick={() => deleteRound()} >Letzte Runde löschen</button> : "" }
-              </div>
-              
-
-       
-              <div>Gruppen: 
-              {   
-                     groups.map(group => { return(
-                     <button key={"group"+ group} className="button" onClick={() => setRoundGroup(prevState => ({
-                       roundCurr: prevState.roundCurr,
-                       groupCurr: group,
-                     }
-                     )) } 
-                     style={{background: group===groupCurr ? '#E4F9D4': ''}}
-                     >{group}</button>
-                     )
-                 })
-                   
-                   }
-
-                <button className='button' onClick={() => setRoundsGroups(prevState=>({
-                    rounds: prevState.rounds,
-                    groups: [...groups, groups.length+1]
-                })) }
-                
-                >Weitere Gruppe</button>
-                {groups.length >1? 
-                <button className='abbrechen' onClick={() => deleteGroup()} >Letzte Gruppe löschen</button> :""}
-              </div>
-
-        </Header>
+        </div>
+           
+        
+        <div className = "form-box">
             <div className='formGrid'>
+
+                {
+                    cards.filter(card =>
+                        card.round===roundCurr &&card.group===groupCurr).length === 0?
+
+                        <p>Für diese Runde und Gruppe gibt es derzeit noch keine Aufgabenkarten. Fügen Sie neue hinzu. </p> : ""
+                }
 
             {   
                 cards.map(card =>
@@ -310,7 +351,7 @@ const EditorMode = (props) => {
 
                             <TextEditor></TextEditor>
 
-                            <button className="button" onClick={() => setModal(false)}>Ok</button>
+                            <button className="btn" onClick={() => setModal(false)}>Ok</button>
                         </div>
                         </Modal>
                         
@@ -338,8 +379,9 @@ const EditorMode = (props) => {
             </div>
 
             <button className='button' onClick={()=> addingCardForm()}>Weitere Aufgabe</button>
-            <button className='button' onClick={()=>save()}>Speichern</button>
-            <button className="abbrechen" onClick={()=>props.setEditingMode(false)}>Schließen</button>
+            
+
+            </div>
         </div>
     )
 }

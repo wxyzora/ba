@@ -1,17 +1,23 @@
 
-.abbrechen {
-    font-size: 12px;
-    border-radius: 5px;
-    background-color: white;
-    color: red;
-    border: 1px solid red; 
-    width: 75px;
-    height: 40px;
-    margin: 5px  
+.btn {
+  margin: 10px;
+  width: 120px;
+  height: 35px
 }
+
+.btnRot {
+  margin: 10px;
+  width: 150px;
+  height: 35px;
+  background-color: white;
+    color: red;
+    border-radius: 3px;
+    border: 1px solid red; 
+}
+
    
     
-.abbrechen:hover {
+.btnRot:hover {
     background-color: darkred;
     color: white; 
 }
@@ -68,23 +74,59 @@
 
 
 
-  table, th, td, caption {
-    border: thin solid #a0a0a0;
+  .overview {
+    
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 3px;
+    grid-auto-rows: minmax(90vh, auto)
   }
-  
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-width: thin 0 0 thin;
-    margin: 0 0 1em;
-    table-layout: auto;
-    max-width: 100%;
+
+  .gridRounds {
+    padding: 3px;
+    display: grid;
+    grid-template-columns: 1fr;   
+    grid-auto-rows: minmax(15vh, auto)
   }
-  th, td {
-    font-weight: normal;
-    text-align: left;
+
+  .gridColumnRound {
+    background-color: rgb(223, 224, 224);
+    margin: 2px;
+    border-radius: 3px;
+    border: 1px rgb(178, 178, 179) solid;
+    
   }
-  th, caption {
-    background-color: #f1f3f4;
-    font-weight: 700;
+
+  .gridGroups {
+
+    background-color: rgb(252, 252, 252);
+    margin: 2px;
+    height: 14vh;
+    
+    border-radius: 3px;
+
+  }
+
+  .gridCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .table {
+    display: grid;
+    grid-template-columns: 1fr 13fr;
+  }
+
+  .overviewCards {
+    
+    font-size: 11px;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 3px;
+    margin: 2px;
+    height: 6vh;
+    background-color: lightsteelblue;
+    position:relative
   }

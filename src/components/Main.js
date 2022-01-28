@@ -6,7 +6,7 @@ import Footer from './Footer'
 import Modal from 'react-modal'
 import EditorMode from './EditorMode';
 import { v4 as uuidv4 } from 'uuid';
-import EditorMode2 from './EditorModal';
+
 
 
 const Main = (props) => {
@@ -118,7 +118,7 @@ const Main = (props) => {
             })}
          
 
-        { (props.editingMode) ?  <EditorMode2 setEditingMode={props.setEditingMode} setCardList={setCardList}
+        { (props.editingMode) ?  <EditorMode setEditingMode={props.setEditingMode} setCardList={setCardList}
                                     save={save} setDelete={setDelete} addCard={addCard} setNewCard={setNewCard}
                                 /> :   
 
